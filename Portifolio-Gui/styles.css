@@ -18,7 +18,25 @@ html.light-mode .particle{
 }
 *{box-sizing:border-box}
 html{height:100%;margin:0;font-family:'Poppins',sans-serif;}
-body{height:100%;margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,var(--bg),#071226,#0b1220,#071226,var(--bg));background-size:400% 400%;animation:backgroundShift 20s ease-in-out infinite;color:var(--text);overflow-x:hidden}
+body{height:100%;margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,var(--bg),#071226,#0b1220,#071226,var(--bg));background-size:400% 400%;animation:backgroundShift 20s ease-in-out infinite;color:var(--text);overflow-x:hidden;position:relative}
+/* Galaxy-like balls animation */
+.galaxy-ball{position:absolute;border-radius:50%;z-index:-1;animation:galaxyOrbit 20s linear infinite}
+.galaxy-ball:nth-child(1){width:4px;height:4px;background:radial-gradient(circle, #ff6b6b, #ff4757);top:20%;left:10%;animation-delay:0s}
+.galaxy-ball:nth-child(2){width:6px;height:6px;background:radial-gradient(circle, #4ecdc4, #26d0ce);top:30%;left:80%;animation-delay:2s}
+.galaxy-ball:nth-child(3){width:3px;height:3px;background:radial-gradient(circle, #a8e6cf, #52c234);top:60%;left:20%;animation-delay:4s}
+.galaxy-ball:nth-child(4){width:5px;height:5px;background:radial-gradient(circle, #ffd93d, #ff8c00);top:40%;left:70%;animation-delay:6s}
+.galaxy-ball:nth-child(5){width:4px;height:4px;background:radial-gradient(circle, #ff9ff3, #f368e0);top:70%;left:50%;animation-delay:8s}
+.galaxy-ball:nth-child(6){width:7px;height:7px;background:radial-gradient(circle, #54a0ff, #2e86de);top:15%;left:60%;animation-delay:10s}
+.galaxy-ball:nth-child(7){width:3px;height:3px;background:radial-gradient(circle, #5f27cd, #341f97);top:80%;left:30%;animation-delay:12s}
+.galaxy-ball:nth-child(8){width:5px;height:5px;background:radial-gradient(circle, #00d2d3, #0097e6);top:50%;left:90%;animation-delay:14s}
+.galaxy-ball:nth-child(9){width:4px;height:4px;background:radial-gradient(circle, #ff9f43, #ee5a24);top:25%;left:40%;animation-delay:16s}
+.galaxy-ball:nth-child(10){width:6px;height:6px;background:radial-gradient(circle, #c44569, #882d4e);top:75%;left:80%;animation-delay:18s}
+.galaxy-ball:nth-child(11){width:5px;height:5px;background:radial-gradient(circle, #ff6b6b, #ff4757);top:85%;left:15%;animation-delay:1s}
+.galaxy-ball:nth-child(12){width:4px;height:4px;background:radial-gradient(circle, #4ecdc4, #26d0ce);top:90%;left:65%;animation-delay:3s}
+.galaxy-ball:nth-child(13){width:6px;height:6px;background:radial-gradient(circle, #a8e6cf, #52c234);top:95%;left:35%;animation-delay:5s}
+.galaxy-ball:nth-child(14){width:3px;height:3px;background:radial-gradient(circle, #ffd93d, #ff8c00);top:88%;left:85%;animation-delay:7s}
+.galaxy-ball:nth-child(15){width:5px;height:5px;background:radial-gradient(circle, #ff9ff3, #f368e0);top:92%;left:55%;animation-delay:9s}
+@keyframes galaxyOrbit{0%{transform:translate(0,0) rotate(0deg) scale(1)}25%{transform:translate(100px,50px) rotate(90deg) scale(1.2)}50%{transform:translate(200px,0) rotate(180deg) scale(0.8)}75%{transform:translate(100px,-50px) rotate(270deg) scale(1.1)}100%{transform:translate(0,0) rotate(360deg) scale(1)}}
 @keyframes backgroundShift{0%{background-position:0% 50%}25%{background-position:100% 50%}50%{background-position:100% 0%}75%{background-position:0% 0%}100%{background-position:0% 50%}}
 /* Soft circles with smooth animation */
 .bubble{position:absolute;border-radius:50%;background:radial-gradient(circle, rgba(56,189,248,0.2) 0%, rgba(124,58,237,0.05) 100%);backdrop-filter:blur(2px);z-index:-1;animation:float 6s ease-in-out infinite;opacity:0.7}
