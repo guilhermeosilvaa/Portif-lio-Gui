@@ -13,12 +13,9 @@
     }
     *{box-sizing:border-box}
     html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(180deg,var(--bg),#071226);color:#e6eef6}
-    /* Soft circles animation */
-    .bubble{position:absolute;border-radius:50%;background:radial-gradient(circle, rgba(56,189,248,0.2) 0%, rgba(124,58,237,0.05) 100%);backdrop-filter:blur(2px);animation:moveCircle 25s linear infinite}
-    .bubble:nth-child(odd){animation-duration:30s;animation-delay:-5s}
-    .bubble:nth-child(even){animation-duration:35s;animation-delay:-10s}
-    .bubble:nth-child(3n){animation-duration:40s;animation-delay:-15s}
-    @keyframes moveCircle{0%{transform:translateX(-100px) translateY(20vh);opacity:0}10%{opacity:0.5}90%{opacity:0.5}100%{transform:translateX(calc(100vw + 100px)) translateY(80vh);opacity:0}}
+    /* Soft circles with smooth animation */
+    .bubble{position:absolute;border-radius:50%;background:radial-gradient(circle, rgba(56,189,248,0.2) 0%, rgba(124,58,237,0.05) 100%);backdrop-filter:blur(2px);z-index:-1;animation:float 6s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0px)}50%{transform:translateY(-10px)}}
     a{color:var(--accent);text-decoration:none}
 
     .wrap{max-width:var(--container);margin:0 auto;padding:32px}
@@ -57,8 +54,12 @@
     .hero h2{font-size:2.1rem;margin:0 0 12px}
     .hero p{color:var(--muted);line-height:1.6}
     .cta{margin-top:18px;display:flex;gap:12px}
-    .btn{background:var(--accent);color:#00121a;padding:10px 16px;border-radius:10px;font-weight:700}
-    .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    .btn{background:var(--accent);color:#00121a;padding:10px 16px;border-radius:10px;font-weight:700;position:relative;overflow:hidden}
+    .btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,var(--accent),transparent);transition:left 0.5s}
+    .btn:hover::before{left:100%}
+    .btn.secondary{background:linear-gradient(135deg,var(--accent),#7c3aed);color:#ffffff;border:none;position:relative;overflow:hidden}
+    .btn.secondary::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);transition:left 0.5s}
+    .btn.secondary:hover::before{left:100%}
 
     .profile{display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center}
     .avatar{width:220px;height:220px;border-radius:18px;background-image:url('pergilPortifilio.png');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;}
@@ -68,6 +69,7 @@
     h3{margin:0 0 12px}
     .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
     .card{background:var(--glass);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    #sobre .card{margin-bottom:40px}
 
     .skills .skill{margin-bottom:12px}
     .bar{height:10px;background:rgba(255,255,255,0.06);border-radius:999px;overflow:hidden}
@@ -83,15 +85,54 @@
 
     footer{padding:28px 0;color:var(--muted);text-align:center;border-top:1px solid rgba(255,255,255,0.02);margin-top:20px}
 
-    @media (max-width:900px){.hero{grid-template-columns:1fr}.avatar{width:180px;height:180px}.wrap{padding:18px}}
+    @media (max-width:1024px){
+      .hero{grid-template-columns:1fr 350px;gap:28px}
+      .hero-card{padding:24px}
+      .avatar{width:200px;height:200px}
+    }
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;gap:24px;padding:32px 0}
+      .avatar{width:180px;height:180px}
+      .wrap{padding:18px}
+      .cards{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+      .badges{gap:6px}
+    }
+    @media (max-width:768px){
+      .hero h2{font-size:1.9rem}
+      .hero-card{padding:22px}
+      .avatar{width:160px;height:160px}
+      .wrap{padding:16px}
+      .cards{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+      .badges{gap:4px}
+    }
     @media (max-width:600px){
       header{padding:6px 0}
-      nav{gap:10px}
-      nav a{padding:6px 8px;font-size:.95rem}
+      nav{gap:8px;flex-wrap:wrap}
+      nav a{padding:6px 8px;font-size:.9rem}
       nav a::after{left:8px;right:8px;bottom:5px}
+      .hero h2{font-size:1.8rem}
+      .hero-card{padding:20px}
+      .avatar{width:140px;height:140px}
+      .wrap{padding:12px}
+      .cards{grid-template-columns:1fr}
+      .skill-row{flex-direction:column;gap:8px;text-align:center}
+      .btn{font-size:.9rem;padding:8px 12px}
+      .badges{gap:2px}
+    }
+    @media (max-width:480px){
+      .hero h2{font-size:1.6rem}
+      .hero-card{padding:16px}
+      .avatar{width:120px;height:120px}
+      .wrap{padding:10px}
+      .cards{grid-template-columns:1fr}
+      .badges{gap:2px;flex-direction:column}
     }
     header.scrolled{transform:translateY(0);backdrop-filter:blur(6px);background:linear-gradient(180deg, rgba(7,10,18,0.6), rgba(7,10,18,0.25));border-radius:14px;padding:6px 12px;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
     header{transition:padding .28s var(--nav-ease),box-shadow .28s var(--nav-ease),backdrop-filter .28s var(--nav-ease),background .28s var(--nav-ease)}
+    .badge-hover{transition:transform 0.3s ease,box-shadow 0.3s ease,filter 0.3s ease}
+    .badge-hover:hover{transform:scale(1.1);box-shadow:0 4px 12px rgba(56,189,248,0.3);filter:brightness(0.8) contrast(1.2)}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+    .badges img{}
   </style>
 </head>
 <body>
@@ -99,25 +140,25 @@
 
 
   <!-- Floating particles animation -->
-  <div class="particle" style="left:10%;top:10%;width:8px;height:8px;"></div>
-  <div class="particle" style="left:20%;top:20%;width:12px;height:12px;"></div>
-  <div class="particle" style="left:30%;top:30%;width:6px;height:6px;"></div>
-  <div class="particle" style="left:40%;top:40%;width:10px;height:10px;"></div>
-  <div class="particle" style="left:50%;top:50%;width:14px;height:14px;"></div>
-  <div class="particle" style="left:60%;top:60%;width:8px;height:8px;"></div>
-  <div class="particle" style="left:70%;top:70%;width:12px;height:12px;"></div>
-  <div class="particle" style="left:80%;top:80%;width:6px;height:6px;"></div>
-  <div class="particle" style="left:90%;top:90%;width:10px;height:10px;"></div>
-  <div class="particle" style="left:15%;top:85%;width:14px;height:14px;"></div>
-  <div class="particle" style="left:25%;top:75%;width:8px;height:8px;"></div>
-  <div class="particle" style="left:35%;top:65%;width:12px;height:12px;"></div>
-  <div class="particle" style="left:45%;top:55%;width:6px;height:6px;"></div>
-  <div class="particle" style="left:55%;top:45%;width:10px;height:10px;"></div>
-  <div class="particle" style="left:65%;top:35%;width:14px;height:14px;"></div>
-  <div class="particle" style="left:75%;top:25%;width:8px;height:8px;"></div>
-  <div class="particle" style="left:85%;top:15%;width:12px;height:12px;"></div>
-  <div class="particle" style="left:5%;top:95%;width:6px;height:6px;"></div>
-  <div class="particle" style="left:95%;top:5%;width:10px;height:10px;"></div>
+  <div class="bubble" style="left:10%;top:10%;width:8px;height:8px;"></div>
+  <div class="bubble" style="left:20%;top:20%;width:12px;height:12px;"></div>
+  <div class="bubble" style="left:30%;top:30%;width:6px;height:6px;"></div>
+  <div class="bubble" style="left:40%;top:40%;width:10px;height:10px;"></div>
+  <div class="bubble" style="left:50%;top:50%;width:14px;height:14px;"></div>
+  <div class="bubble" style="left:60%;top:60%;width:8px;height:8px;"></div>
+  <div class="bubble" style="left:70%;top:70%;width:12px;height:12px;"></div>
+  <div class="bubble" style="left:80%;top:80%;width:6px;height:6px;"></div>
+  <div class="bubble" style="left:90%;top:90%;width:10px;height:10px;"></div>
+  <div class="bubble" style="left:15%;top:15%;width:14px;height:14px;"></div>
+  <div class="bubble" style="left:25%;top:25%;width:8px;height:8px;"></div>
+  <div class="bubble" style="left:35%;top:35%;width:12px;height:12px;"></div>
+  <div class="bubble" style="left:45%;top:45%;width:6px;height:6px;"></div>
+  <div class="bubble" style="left:55%;top:55%;width:10px;height:10px;"></div>
+  <div class="bubble" style="left:65%;top:65%;width:14px;height:14px;"></div>
+  <div class="bubble" style="left:75%;top:75%;width:8px;height:8px;"></div>
+  <div class="bubble" style="left:85%;top:85%;width:12px;height:12px;"></div>
+  <div class="bubble" style="left:5%;top:5%;width:6px;height:6px;"></div>
+  <div class="bubble" style="left:95%;top:95%;width:10px;height:10px;"></div>
 
   <div class="wrap">
     <header>
@@ -130,7 +171,6 @@
       </div>
       <nav>
         <a href="#sobre">Sobre</a>
-        <a href="#skills">Habilidades</a>
         <a href="#projetos">Projetos</a>
         <a href="#contato">Contato</a>
       </nav>
@@ -139,7 +179,7 @@
     <main>
       <section class="hero">
         <div class="hero-card">
-          <h2>Olá — eu sou Guilherme</h2>
+          <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=Ol%C3%A1++eu+sou+Guilherme+Analista+de+QA" alt="Typing SVG">
           <p>Sou QA e desenvolvedor com foco em backend usando Java e Python. Faço automações, APIs robustas e pipelines de testes confiáveis para entregar software estável e escalável.</p>
           <div class="cta">
             <a class="btn" href="#projetos">Ver Projetos</a>
@@ -163,69 +203,53 @@
              <p>Formado em <strong>Análise e Desenvolvimento de Sistemas</strong> (graduação / técnico) e atualmente cursando pós-graduação em <strong>Engenharia de Software</strong>.</p>
            </div>
         </div>
-      </section>
 
-      <section id="skills" class="skills">
-        <h3>Habilidades</h3>
-        <div class="cards">
-        </div>
-
-        <h4>Languages</h4>
-        <div class="badges">
-          <img src="https://img.shields.io/badge/Java-F7DF1E?style=for-the-badge&logo=java&logoColor=black" alt="Java">
-          <img src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-        </div>
-
-        <h4>Frameworks & Libraries</h4>
-        <div class="badges">
-          <img src="https://img.shields.io/badge/json%20web%20tokens-323330?style=for-the-badge&logo=json-web-tokens&logoColor=pink" alt="JWT">
-          <img src="https://img.shields.io/badge/Microsoft_Azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure">
-          <img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=Jira&logoColor=white" alt="Jira">
-        </div>
-
-        <h4>Tools & Testing</h4>
-        <div class="badges">
-          <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
-          <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
-          <img src="https://img.shields.io/badge/Bitbucket-0089D6?style=for-the-badge&logo=Bitbucket&logoColor=white" alt="Bitbucket">
-        </div>
-
-        <h4>Database</h4>
-        <div class="badges">
-          <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
-          <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB">
-        </div>
-
-        <h4>Design & Architecture</h4>
-        <div class="badges">
-          <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" alt="Figma">
-          <img src="https://img.shields.io/badge/Microservices-1572B6?style=for-the-badge&logo=docker&logoColor=white" alt="Microservices">
-          <img src="https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white" alt="Trello">
+        <div class="tech-stack">
+          <h3>Soft Skill</h3>
+          <div class="card">
+            <div class="badges">
+              <img class="badge-hover" src="https://img.shields.io/badge/Java-F7DF1E?style=for-the-badge&logo=java&logoColor=black" alt="Java">
+              <img class="badge-hover" src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+              <img class="badge-hover" src="https://img.shields.io/badge/json%20web%20tokens-323330?style=for-the-badge&logo=json-web-tokens&logoColor=pink" alt="Json">
+              <img class="badge-hover" src="https://img.shields.io/badge/Microsoft_Azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure">
+              <img class="badge-hover" src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=Jira&logoColor=white" alt="Jira">
+              <img class="badge-hover" src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
+              <img class="badge-hover" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+              <img class="badge-hover" src="https://img.shields.io/badge/Bitbucket-0089D6?style=for-the-badge&logo=Bitbucket&logoColor=white" alt="Bitbucket">
+              <img class="badge-hover" src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
+              <img class="badge-hover" src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB">
+              <img class="badge-hover" src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" alt="Figma">
+              <img class="badge-hover" src="https://img.shields.io/badge/Microservices-1572B6?style=for-the-badge&logo=docker&logoColor=white" alt="Microservices">
+              <img class="badge-hover" src="https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white" alt="Trello">
+            </div>
+          </div>
         </div>
       </section>
+
+
 
       <section id="projetos" class="projects">
         <h3>Projetos</h3>
         <div class="cards">
           <div class="card project">
-            <div><strong>Sistema de Gestão (Spring Boot)</strong></div>
-            <div class="meta">Backend, API REST, autenticação, testes</div>
-            <div class="links"><a href="#">Repositório</a><a href="#">Demo</a></div>
-          </div>
-          <div class="card project">
-            <div><strong>Automação de Testes (Python)</strong></div>
-            <div class="meta">Scripts, integração CI, relatórios</div>
-            <div class="links"><a href="#">Repositório</a><a href="#">Relatório</a></div>
-          </div>
-          <div class="card project">
-            <div><strong>API REST (Flask)</strong></div>
-            <div class="meta">Endpoints, documentação, testes</div>
-            <div class="links"><a href="#">Repositório</a></div>
-          </div>
-          <div class="card project">
             <div><strong>Gerador de QR Code (Python)</strong></div>
             <div class="meta">Geração de QR codes para URLs, interface web</div>
             <div class="links"><a href="https://github.com/guilhermeosilvaa/QR-Code-Generated-URL" target="_blank">Repositório</a></div>
+          </div>
+          <div class="card project">
+            <div><strong>Sistema de Gestão (Spring Boot) - Em Andamento</strong></div>
+            <div class="meta">Backend, API REST, autenticação, testes</div>
+            <div class="links">Em Andamento</div>
+          </div>
+          <div class="card project">
+            <div><strong>Automação de Testes (Python) - Em Andamento</strong></div>
+            <div class="meta">Scripts, integração CI, relatórios</div>
+            <div class="links">Em Andamento</div>
+          </div>
+          <div class="card project">
+            <div><strong>API REST (Flask) - Em Andamento</strong></div>
+            <div class="meta">Endpoints, documentação, testes</div>
+            <div class="links">Em Andamento</div>
           </div>
         </div>
       </section>
