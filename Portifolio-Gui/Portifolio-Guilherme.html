@@ -8,14 +8,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b1220; --card:#071026; --muted:#94a3b8; --accent:#38bdf8; --glass: rgba(255,255,255,0.03);
+      --bg:#000000; --card:#111111; --muted:#cccccc; --accent:#ff0000; --glass: rgba(255,255,255,0.05); --text:#ffffff;
       --radius:12px; --container:1100px; --nav-transition:.22s; --nav-ease:cubic-bezier(.2,.9,.3,1);
     }
+    :root.light-mode{
+      --bg:#ffffff; --card:#f0f0f0; --muted:#666666; --accent:#cc0000; --glass: rgba(0,0,0,0.05); --text:#000000;
+    }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(180deg,var(--bg),#071226);color:#e6eef6}
+    html{height:100%;margin:0;font-family:'Poppins',sans-serif;}
+    body{height:100%;margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,var(--bg),#071226,#0b1220,#071226,var(--bg));background-size:400% 400%;animation:backgroundShift 20s ease-in-out infinite;color:var(--text)}
+    @keyframes backgroundShift{0%{background-position:0% 50%}25%{background-position:100% 50%}50%{background-position:100% 0%}75%{background-position:0% 0%}100%{background-position:0% 50%}}
     /* Soft circles with smooth animation */
     .bubble{position:absolute;border-radius:50%;background:radial-gradient(circle, rgba(56,189,248,0.2) 0%, rgba(124,58,237,0.05) 100%);backdrop-filter:blur(2px);z-index:-1;animation:float 6s ease-in-out infinite}
     @keyframes float{0%,100%{transform:translateY(0px)}50%{transform:translateY(-10px)}}
+    /* Floating particles from bottom to top */
+    .particle{position:absolute;border-radius:50%;background:radial-gradient(circle, rgba(56,189,248,0.3) 0%, rgba(124,58,237,0.1) 100%);backdrop-filter:blur(1px);z-index:-1;animation:floatUp 12s linear infinite}
+    @keyframes floatUp{0%{transform:translateY(100vh);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(0vh);opacity:0}}
     a{color:var(--accent);text-decoration:none}
 
     .wrap{max-width:var(--container);margin:0 auto;padding:32px}
@@ -35,6 +43,8 @@
     nav a:focus-visible{outline:2px solid rgba(56,189,248,0.18);outline-offset:3px;border-radius:8px}
     nav a.active{color:var(--accent);transform:translateY(-6px);box-shadow:0 12px 30px rgba(2,6,23,0.6);background:rgba(255,255,255,0.03)}
     nav a.active::after{transform:scaleX(1)}
+    nav button{background:linear-gradient(135deg,var(--accent),#7c3aed);color:#ffffff;border:none;padding:8px 12px;border-radius:8px;font-weight:600;cursor:pointer;transition:transform 0.2s ease,box-shadow 0.2s ease}
+    nav button:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(56,189,248,0.3)}
     .inline-link{color:var(--muted);font-weight:600;background:none;border:none;padding:0}
     .inline-link:hover{color:var(--accent);text-decoration:none}
     .social a{color:var(--muted);display:inline-flex;align-items:center;gap:8px}
@@ -50,7 +60,7 @@
     .card .skill{margin-top:12px}
 
     .hero{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center;padding:48px 0}
-    .hero-card{background:linear-gradient(180deg,var(--card),rgba(7,16,38,0.6));padding:28px;border-radius:var(--radius);box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+    .hero-card{background:linear-gradient(180deg,var(--card),rgba(7,16,38,0.6));padding:28px;border-radius:var(--radius);box-shadow:0 6px 30px rgba(2,6,23,0.6);color:var(--text)}
     .hero h2{font-size:2.1rem;margin:0 0 12px}
     .hero p{color:var(--muted);line-height:1.6}
     .cta{margin-top:18px;display:flex;gap:12px}
@@ -133,6 +143,7 @@
     .badge-hover:hover{transform:scale(1.1);box-shadow:0 4px 12px rgba(56,189,248,0.3);filter:brightness(0.8) contrast(1.2)}
     .badges{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
     .badges img{}
+    body.dark .badges img{filter: brightness(0.8) contrast(1.2); border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.3)}
   </style>
 </head>
 <body>
@@ -160,6 +171,47 @@
   <div class="bubble" style="left:5%;top:5%;width:6px;height:6px;"></div>
   <div class="bubble" style="left:95%;top:95%;width:10px;height:10px;"></div>
 
+  <!-- Floating particles from bottom to top -->
+  <div class="particle" style="left:10%;width:6px;height:6px;animation-delay:0s;"></div>
+  <div class="particle" style="left:25%;width:8px;height:8px;animation-delay:1s;"></div>
+  <div class="particle" style="left:40%;width:10px;height:10px;animation-delay:2s;"></div>
+  <div class="particle" style="left:55%;width:6px;height:6px;animation-delay:3s;"></div>
+  <div class="particle" style="left:70%;width:8px;height:8px;animation-delay:4s;"></div>
+  <div class="particle" style="left:85%;width:10px;height:10px;animation-delay:5s;"></div>
+  <div class="particle" style="left:15%;width:8px;height:8px;animation-delay:6s;"></div>
+  <div class="particle" style="left:30%;width:6px;height:6px;animation-delay:7s;"></div>
+  <div class="particle" style="left:45%;width:10px;height:10px;animation-delay:8s;"></div>
+  <div class="particle" style="left:60%;width:8px;height:8px;animation-delay:9s;"></div>
+  <div class="particle" style="left:75%;width:6px;height:6px;animation-delay:10s;"></div>
+  <div class="particle" style="left:90%;width:10px;height:10px;animation-delay:11s;"></div>
+  <div class="particle" style="left:5%;width:7px;height:7px;animation-delay:12s;"></div>
+  <div class="particle" style="left:20%;width:9px;height:9px;animation-delay:13s;"></div>
+  <div class="particle" style="left:35%;width:5px;height:5px;animation-delay:14s;"></div>
+  <div class="particle" style="left:50%;width:11px;height:11px;animation-delay:15s;"></div>
+  <div class="particle" style="left:65%;width:7px;height:7px;animation-delay:16s;"></div>
+  <div class="particle" style="left:80%;width:9px;height:9px;animation-delay:17s;"></div>
+  <div class="particle" style="left:95%;width:5px;height:5px;animation-delay:18s;"></div>
+  <div class="particle" style="left:12%;width:8px;height:8px;animation-delay:19s;"></div>
+  <div class="particle" style="left:28%;width:6px;height:6px;animation-delay:20s;"></div>
+  <div class="particle" style="left:42%;width:10px;height:10px;animation-delay:21s;"></div>
+  <div class="particle" style="left:57%;width:8px;height:8px;animation-delay:22s;"></div>
+  <div class="particle" style="left:72%;width:6px;height:6px;animation-delay:23s;"></div>
+  <div class="particle" style="left:87%;width:10px;height:10px;animation-delay:24s;"></div>
+  <div class="particle" style="left:2%;width:6px;height:6px;animation-delay:25s;"></div>
+  <div class="particle" style="left:18%;width:8px;height:8px;animation-delay:26s;"></div>
+  <div class="particle" style="left:33%;width:10px;height:10px;animation-delay:27s;"></div>
+  <div class="particle" style="left:48%;width:6px;height:6px;animation-delay:28s;"></div>
+  <div class="particle" style="left:63%;width:8px;height:8px;animation-delay:29s;"></div>
+  <div class="particle" style="left:78%;width:10px;height:10px;animation-delay:30s;"></div>
+  <div class="particle" style="left:93%;width:8px;height:8px;animation-delay:31s;"></div>
+  <div class="particle" style="left:7%;width:6px;height:6px;animation-delay:32s;"></div>
+  <div class="particle" style="left:22%;width:10px;height:10px;animation-delay:33s;"></div>
+  <div class="particle" style="left:37%;width:8px;height:8px;animation-delay:34s;"></div>
+  <div class="particle" style="left:52%;width:6px;height:6px;animation-delay:35s;"></div>
+  <div class="particle" style="left:67%;width:10px;height:10px;animation-delay:36s;"></div>
+  <div class="particle" style="left:82%;width:8px;height:8px;animation-delay:37s;"></div>
+  <div class="particle" style="left:97%;width:6px;height:6px;animation-delay:38s;"></div>
+
   <div class="wrap">
     <header>
       <div class="brand">
@@ -171,8 +223,12 @@
       </div>
       <nav>
         <a href="#sobre">Sobre</a>
+        <a href="#stats">Estatísticas</a>
         <a href="#projetos">Projetos</a>
         <a href="#contato">Contato</a>
+        <button onclick="mudarTema()" class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/></svg>
+        </button>
       </nav>
     </header>
 
@@ -192,6 +248,28 @@
           <div style="font-weight:700">Guilherme — QA & Dev</div>
           <div class="info">Java • Spring • Python • Flask/Django • Test Automation • SQL</div>
         </aside>
+      </section>
+
+      <section id="stats" class="stats">
+        <h3>Estatísticas</h3>
+        <div class="cards">
+          <div class="card stat">
+            <div class="number">4+</div>
+            <div class="label">Projetos Completados</div>
+          </div>
+          <div class="card stat">
+            <div class="number">2+</div>
+            <div class="label">Anos de Experiência</div>
+          </div>
+          <div class="card stat">
+            <div class="number">10+</div>
+            <div class="label">Tecnologias Dominadas</div>
+          </div>
+          <div class="card stat">
+            <div class="number">100%</div>
+            <div class="label">Dedicação</div>
+          </div>
+        </div>
       </section>
 
       <section id="sobre">
@@ -313,6 +391,18 @@
       window.location.href = mailto;
     }
 
+    function mudarTema() {
+      document.documentElement.classList.toggle("light-mode");
+      const isLight = document.documentElement.classList.contains("light-mode");
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+      const themeToggle = document.getElementById('themeToggle');
+      if (isLight) {
+        themeToggle.innerHTML = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/></svg>';
+      } else {
+        themeToggle.innerHTML = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', ()=>{
       smoothScroll();
       const emailBtn = document.getElementById('emailBtn');
@@ -341,6 +431,8 @@
       };
       window.addEventListener('scroll', onScroll, {passive:true});
       onScroll();
+
+
     });
   </script>
 
