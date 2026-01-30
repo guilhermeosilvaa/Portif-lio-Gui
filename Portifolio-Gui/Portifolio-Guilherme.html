@@ -6,145 +6,7 @@
   <meta name="description" content="Portfólio de Guilherme — QA e Desenvolvedor Java & Python. Projetos, habilidades e contato.">
   <title>Guilherme — Portfólio | QA • Java • Python</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#000000; --card:#111111; --muted:#cccccc; --accent:#ff0000; --glass: rgba(255,255,255,0.05); --text:#ffffff;
-      --radius:12px; --container:1100px; --nav-transition:.22s; --nav-ease:cubic-bezier(.2,.9,.3,1);
-    }
-    :root.light-mode{
-      --bg:#ffffff; --card:#f0f0f0; --muted:#666666; --accent:#cc0000; --glass: rgba(0,0,0,0.05); --text:#000000;
-    }
-    *{box-sizing:border-box}
-    html{height:100%;margin:0;font-family:'Poppins',sans-serif;}
-    body{height:100%;margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,var(--bg),#071226,#0b1220,#071226,var(--bg));background-size:400% 400%;animation:backgroundShift 20s ease-in-out infinite;color:var(--text)}
-    @keyframes backgroundShift{0%{background-position:0% 50%}25%{background-position:100% 50%}50%{background-position:100% 0%}75%{background-position:0% 0%}100%{background-position:0% 50%}}
-    /* Soft circles with smooth animation */
-    .bubble{position:absolute;border-radius:50%;background:radial-gradient(circle, rgba(56,189,248,0.2) 0%, rgba(124,58,237,0.05) 100%);backdrop-filter:blur(2px);z-index:-1;animation:float 6s ease-in-out infinite}
-    @keyframes float{0%,100%{transform:translateY(0px)}50%{transform:translateY(-10px)}}
-    /* Floating particles from bottom to top */
-    .particle{position:absolute;border-radius:50%;background:radial-gradient(circle, rgba(56,189,248,0.3) 0%, rgba(124,58,237,0.1) 100%);backdrop-filter:blur(1px);z-index:-1;animation:floatUp 12s linear infinite}
-    @keyframes floatUp{0%{transform:translateY(100vh);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(0vh);opacity:0}}
-    a{color:var(--accent);text-decoration:none}
-
-    .wrap{max-width:var(--container);margin:0 auto;padding:32px}
-
-
-
-    header{position:sticky;top:12px;background:transparent;padding:8px 0;display:flex;align-items:center;justify-content:space-between;z-index:20}
-    .brand{display:flex;gap:14px;align-items:center}
-    .logo{width:48px;height:48px;border-radius:10px;background-image:url('pergilPortifilio.png');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;}
-    .brand h1{font-size:1rem;margin:0}
-
-    nav{display:flex;gap:18px;align-items:center}
-    nav a{color:var(--muted);font-weight:600;position:relative;padding:8px 10px;border-radius:8px;display:inline-block;transition:color var(--nav-transition) var(--nav-ease),transform calc(var(--nav-transition) * .9) var(--nav-ease),box-shadow var(--nav-transition) var(--nav-ease),background-color calc(var(--nav-transition) * .9) var(--nav-ease)}
-    nav a::after{content:"";position:absolute;left:10px;right:10px;bottom:6px;height:2px;background:linear-gradient(90deg,var(--accent),#7c3aed);transform:scaleX(0);transform-origin:left center;border-radius:2px;transition:transform calc(var(--nav-transition) * 1.2) var(--nav-ease);opacity:.95}
-    nav a:hover{color:var(--accent);transform:translateY(-4px);box-shadow:0 8px 22px rgba(2,6,23,0.55);background:rgba(255,255,255,0.02)}
-    nav a:hover::after{transform:scaleX(1)}
-    nav a:focus-visible{outline:2px solid rgba(56,189,248,0.18);outline-offset:3px;border-radius:8px}
-    nav a.active{color:var(--accent);transform:translateY(-6px);box-shadow:0 12px 30px rgba(2,6,23,0.6);background:rgba(255,255,255,0.03)}
-    nav a.active::after{transform:scaleX(1)}
-    nav button{background:linear-gradient(135deg,var(--accent),#7c3aed);color:#ffffff;border:none;padding:8px 12px;border-radius:8px;font-weight:600;cursor:pointer;transition:transform 0.2s ease,box-shadow 0.2s ease}
-    nav button:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(56,189,248,0.3)}
-    .inline-link{color:var(--muted);font-weight:600;background:none;border:none;padding:0}
-    .inline-link:hover{color:var(--accent);text-decoration:none}
-    .social a{color:var(--muted);display:inline-flex;align-items:center;gap:8px}
-    .social a:hover{color:var(--accent)}
-    .icon{width:18px;height:18px;display:inline-block;vertical-align:middle;fill:currentColor}
-    .skill-row{display:flex;align-items:center;gap:16px}
-    .skill-badge{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;font-weight:700;color:#021025}
-    .skill-badge.java{background:linear-gradient(135deg,#7fb3ff,#2f6fa8);color:#021025}
-    .skill-badge.python{background:linear-gradient(135deg,#ffd43b,#f0c419);color:#062238}
-    .skill-badge.api{background:linear-gradient(135deg,#38bdf8,#60a5fa);color:#021025}
-    .skill-badge.automation{background:linear-gradient(135deg,#7c3aed,#a78bfa);color:#ffffff}
-    .skill-badge .initials{font-size:14px;line-height:1}
-    .card .skill{margin-top:12px}
-
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center;padding:48px 0}
-    .hero-card{background:linear-gradient(180deg,var(--card),rgba(7,16,38,0.6));padding:28px;border-radius:var(--radius);box-shadow:0 6px 30px rgba(2,6,23,0.6);color:var(--text)}
-    .hero h2{font-size:2.1rem;margin:0 0 12px}
-    .hero p{color:var(--muted);line-height:1.6}
-    .cta{margin-top:18px;display:flex;gap:12px}
-    .btn{background:linear-gradient(135deg,var(--accent),#7c3aed);color:#ffffff;border:none;padding:10px 16px;border-radius:10px;font-weight:700;position:relative;overflow:hidden}
-    .btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);transition:left 0.5s}
-    .btn:hover::before{left:100%}
-    .btn.secondary{background:linear-gradient(135deg,var(--accent),#7c3aed);color:#ffffff;border:none;position:relative;overflow:hidden}
-    .btn.secondary::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);transition:left 0.5s}
-    .btn.secondary:hover::before{left:100%}
-
-    .profile{display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center}
-    .avatar{width:220px;height:220px;border-radius:18px;background-image:url('pergilPortifilio.png');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;}
-    .info{color:var(--muted);font-size:.95rem}
-
-    section{padding:44px 0}
-    h3{margin:0 0 12px}
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-    .card{background:var(--glass);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-    #sobre .card{margin-bottom:40px}
-
-    .skills .skill{margin-bottom:12px}
-    .bar{height:10px;background:rgba(255,255,255,0.06);border-radius:999px;overflow:hidden}
-    .bar > span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#7c3aed)}
-
-    .projects .project{display:flex;flex-direction:column;gap:8px}
-    .project .meta{color:var(--muted);font-size:.95rem}
-    .project .links{display:flex;gap:8px;margin-top:8px}
-
-    form.contact{display:grid;gap:12px}
-    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px;border-radius:8px;color:#e6eef6}
-    textarea{min-height:120px}
-
-    footer{padding:28px 0;color:var(--muted);text-align:center;border-top:1px solid rgba(255,255,255,0.02);margin-top:20px}
-
-    @media (max-width:1024px){
-      .hero{grid-template-columns:1fr 350px;gap:28px}
-      .hero-card{padding:24px}
-      .avatar{width:200px;height:200px}
-    }
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr;gap:24px;padding:32px 0}
-      .avatar{width:180px;height:180px}
-      .wrap{padding:18px}
-      .cards{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-      .badges{gap:6px}
-    }
-    @media (max-width:768px){
-      .hero h2{font-size:1.9rem}
-      .hero-card{padding:22px}
-      .avatar{width:160px;height:160px}
-      .wrap{padding:16px}
-      .cards{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
-      .badges{gap:4px}
-    }
-    @media (max-width:600px){
-      header{padding:6px 0}
-      nav{gap:8px;flex-wrap:wrap}
-      nav a{padding:6px 8px;font-size:.9rem}
-      nav a::after{left:8px;right:8px;bottom:5px}
-      .hero h2{font-size:1.8rem}
-      .hero-card{padding:20px}
-      .avatar{width:140px;height:140px}
-      .wrap{padding:12px}
-      .cards{grid-template-columns:1fr}
-      .skill-row{flex-direction:column;gap:8px;text-align:center}
-      .btn{font-size:.9rem;padding:8px 12px}
-      .badges{gap:2px}
-    }
-    @media (max-width:480px){
-      .hero h2{font-size:1.6rem}
-      .hero-card{padding:16px}
-      .avatar{width:120px;height:120px}
-      .wrap{padding:10px}
-      .cards{grid-template-columns:1fr}
-      .badges{gap:2px;flex-direction:column}
-    }
-    header.scrolled{transform:translateY(0);backdrop-filter:blur(6px);background:linear-gradient(180deg, rgba(7,10,18,0.6), rgba(7,10,18,0.25));border-radius:14px;padding:6px 12px;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
-    header{transition:padding .28s var(--nav-ease),box-shadow .28s var(--nav-ease),backdrop-filter .28s var(--nav-ease),background .28s var(--nav-ease)}
-    .badge-hover{transition:transform 0.3s ease,box-shadow 0.3s ease,filter 0.3s ease}
-    .badge-hover:hover{transform:scale(1.1);box-shadow:0 4px 12px rgba(56,189,248,0.3);filter:brightness(0.8) contrast(1.2)}
-    .badges{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
-    .badges img{}
-    body.dark .badges img{filter: brightness(0.8) contrast(1.2); border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.3)}
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -222,10 +84,17 @@
         </div>
       </div>
       <nav>
-        <a href="#sobre">Sobre</a>
-        <a href="#stats">Estatísticas</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#contato">Contato</a>
+        <a href="#sobre" data-lang="navSobre">Sobre</a>
+        <a href="#stats" data-lang="navStats">Estatísticas</a>
+        <a href="#projetos" data-lang="navProjetos">Projetos</a>
+        <a href="#contato" data-lang="navContato">Contato</a>
+        <div class="language-selector">
+          <select id="languageSelect">
+            <option value="pt">🇧🇷 PT</option>
+            <option value="en">🇺🇸 EN</option>
+            <option value="es">🇪🇸 ES</option>
+          </select>
+        </div>
         <button onclick="mudarTema()" class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/></svg>
         </button>
@@ -235,55 +104,55 @@
     <main>
       <section class="hero">
         <div class="hero-card">
-          <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=Ol%C3%A1++eu+sou+Guilherme+Analista+de+QA" alt="Typing SVG">
-          <p>Sou QA e desenvolvedor com foco em backend usando Java e Python. Faço automações, APIs robustas e pipelines de testes confiáveis para entregar software estável e escalável.</p>
+          <img id="typingSvg" src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=Ol%C3%A1++eu+sou+Guilherme+Analista+de+QA" alt="Typing SVG">
+          <p data-lang="heroDesc">Sou QA e desenvolvedor com foco em backend usando Java e Python. Faço automações, APIs robustas e pipelines de testes confiáveis para entregar software estável e escalável.</p>
           <div class="cta">
-            <a class="btn" href="#projetos">Ver Projetos</a>
-            <a class="btn secondary" href="#contato">Fale Comigo</a>
+            <a class="btn" href="#projetos" data-lang="heroBtn1">Ver Projetos</a>
+            <a class="btn secondary" href="#contato" data-lang="heroBtn2">Fale Comigo</a>
           </div>
         </div>
 
         <aside class="hero-card profile">
-          <div class="avatar">G</div>
+          <div class="avatar"></div>
           <div style="font-weight:700">Guilherme — QA & Dev</div>
           <div class="info">Java • Spring • Python • Flask/Django • Test Automation • SQL</div>
         </aside>
       </section>
 
       <section id="stats" class="stats">
-        <h3>Estatísticas</h3>
+        <h3 data-lang="statsTitle">Estatísticas</h3>
         <div class="cards">
           <div class="card stat">
-            <div class="number">4+</div>
-            <div class="label">Projetos Completados</div>
-          </div>
-          <div class="card stat">
             <div class="number">2+</div>
-            <div class="label">Anos de Experiência</div>
+            <div class="label" data-lang="stat1Label">Projetos Completados</div>
           </div>
           <div class="card stat">
-            <div class="number">10+</div>
-            <div class="label">Tecnologias Dominadas</div>
+            <div class="number">6+</div>
+            <div class="label" data-lang="stat2Label">Anos de Experiência</div>
+          </div>
+          <div class="card stat">
+            <div class="number">15+</div>
+            <div class="label" data-lang="stat3Label">Tecnologias Dominadas</div>
           </div>
           <div class="card stat">
             <div class="number">100%</div>
-            <div class="label">Dedicação</div>
+            <div class="label" data-lang="stat4Label">Dedicação</div>
           </div>
         </div>
       </section>
 
       <section id="sobre">
-        <h3>Sobre Mim</h3>
+        <h3 data-lang="sobreTitle">Sobre Mim</h3>
         <div class="card">
-           <p>Tenho experiência em desenvolvimento backend e automação de testes. Trabalho com projetos que exigem confiabilidade, escrita de testes automatizados e integração contínua.</p>
+           <p data-lang="sobreDesc">Tenho experiência em desenvolvimento backend e automação de testes. Trabalho com projetos que exigem confiabilidade, escrita de testes automatizados e integração contínua.</p>
            <div class="education">
-             <h3>Educação</h3>
-             <p>Formado em <strong>Análise e Desenvolvimento de Sistemas</strong> (graduação / técnico) e atualmente cursando pós-graduação em <strong>Engenharia de Software</strong>.</p>
+             <h3 data-lang="educacaoTitle">Educação</h3>
+             <p data-lang="educacaoDesc">Formado em <strong>Análise e Desenvolvimento de Sistemas</strong> (graduação / técnico) e atualmente cursando pós-graduação em <strong>Engenharia de Software</strong>.</p>
            </div>
         </div>
 
         <div class="tech-stack">
-          <h3>Soft Skill</h3>
+          <h3 data-lang="softSkillTitle">Soft Skill</h3>
           <div class="card">
             <div class="badges">
               <img class="badge-hover" src="https://img.shields.io/badge/Java-F7DF1E?style=for-the-badge&logo=java&logoColor=black" alt="Java">
@@ -307,35 +176,41 @@
 
 
       <section id="projetos" class="projects">
-        <h3>Projetos</h3>
+        <h3 data-lang="projetosTitle">Projetos</h3>
         <div class="cards">
           <div class="card project">
-            <div><strong>Gerador de QR Code (Python)</strong></div>
-            <div class="meta">Geração de QR codes para URLs, interface web</div>
-            <div class="links"><a href="https://github.com/guilhermeosilvaa/QR-Code-Generated-URL" target="_blank">Repositório</a></div>
+            <div><strong data-lang="projeto1Title">Gerador de QR Code (Python)</strong></div>
+            <div class="meta" data-lang="projeto1Desc">Geração de QR codes para URLs, interface web</div>
+            <div class="links"><a href="https://github.com/guilhermeosilvaa/QR-Code-Generated-URL" target="_blank" data-lang="projeto1Link">Repositório</a></div>
           </div>
           <div class="card project">
-            <div><strong>Sistema de Gestão (Spring Boot) - Em Andamento</strong></div>
-            <div class="meta">Backend, API REST, autenticação, testes</div>
-            <div class="links">Em Andamento</div>
+            <div><strong data-lang="projeto2Title">Sistema de Gestão (Spring Boot)</strong></div>
+            <div class="meta" data-lang="projeto2Desc">Backend, API REST, autenticação, testes</div>
+            <div class="links" data-lang="projeto2Link">Em Andamento</div>
           </div>
           <div class="card project">
-            <div><strong>Automação de Testes (Python) - Em Andamento</strong></div>
-            <div class="meta">Scripts, integração CI, relatórios</div>
-            <div class="links">Em Andamento</div>
+            <div><strong data-lang="projeto3Title">Automação de Testes (Python)</strong></div>
+            <div class="meta" data-lang="projeto3Desc">Scripts, integração CI, relatórios</div>
+            <div class="links" data-lang="projeto3Link">Em Andamento</div>
           </div>
           <div class="card project">
-            <div><strong>API REST (Flask) - Em Andamento</strong></div>
-            <div class="meta">Endpoints, documentação, testes</div>
-            <div class="links">Em Andamento</div>
+            <div><strong data-lang="projeto4Title">API REST (Flask)</strong></div>
+            <div class="meta" data-lang="projeto4Desc">Endpoints, documentação, testes</div>
+            <div class="links" data-lang="projeto4Link">Em Andamento</div>
           </div>
         </div>
       </section>
 
       <section id="contato">
-        <h3>Contato</h3>
+        <h3 data-lang="contatoTitle">Contato</h3>
         <div class="card">
-          <p>Envie um email: <a href="#" id="emailBtn" class="inline-link"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>Email</a></p>
+          <div class="contact-info">
+            <span data-lang="contatoDesc">Envie um email:</span>
+            <a href="#" id="emailBtn" class="inline-link">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <span data-lang="contatoLink">guilhermeosilva2406@gmail.com</span>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -363,78 +238,7 @@
 
   </div>
 
-  <script>
-    function smoothScroll() {
-      document.querySelectorAll('a[href^="#"]').forEach(a=>{
-        a.addEventListener('click', e=>{
-          const href=a.getAttribute('href');
-          if(href.startsWith('#')){
-            e.preventDefault();
-            const el=document.querySelector(href);
-            if(el) {
-              el.scrollIntoView({behavior:'smooth',block:'start'});
-              // Set active class immediately
-              const navLinks = document.querySelectorAll('nav a');
-              navLinks.forEach(link=>link.classList.remove('active'));
-              a.classList.add('active');
-            }
-          }
-        });
-      });
-    }
-
-    function sendEmail(){
-      const user = 'guilhermeosilva2406';
-      const domain = 'gmail.com';
-      const subject = encodeURIComponent('Contato via portfólio');
-      const mailto = `mailto:${user}@${domain}?subject=${subject}`;
-      window.location.href = mailto;
-    }
-
-    function mudarTema() {
-      document.documentElement.classList.toggle("light-mode");
-      const isLight = document.documentElement.classList.contains("light-mode");
-      localStorage.setItem("theme", isLight ? "light" : "dark");
-      const themeToggle = document.getElementById('themeToggle');
-      if (isLight) {
-        themeToggle.innerHTML = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/></svg>';
-      } else {
-        themeToggle.innerHTML = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', ()=>{
-      smoothScroll();
-      const emailBtn = document.getElementById('emailBtn');
-      if(emailBtn) emailBtn.addEventListener('click', e=>{ e.preventDefault(); sendEmail(); });
-      const footerEmail = document.getElementById('footerEmail');
-      if(footerEmail) footerEmail.addEventListener('click', e=>{ e.preventDefault(); sendEmail(); });
-      // marcar link ativo conforme a seção visível
-      const sections = document.querySelectorAll('main section[id]');
-      const navLinks = document.querySelectorAll('nav a');
-      const observer = new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-          const id = entry.target.getAttribute('id');
-          const link = document.querySelector(`nav a[href="#${id}"]`);
-          if(entry.isIntersecting){
-            navLinks.forEach(a=>a.classList.remove('active'));
-            if(link) link.classList.add('active');
-          }
-        });
-      },{root:null,rootMargin:'0px 0px -40% 0px',threshold:0});
-      sections.forEach(s=>observer.observe(s));
-
-      // header pequeno efeito ao rolar
-      const header = document.querySelector('header');
-      const onScroll = ()=>{
-        if(window.scrollY > 16) header.classList.add('scrolled'); else header.classList.remove('scrolled');
-      };
-      window.addEventListener('scroll', onScroll, {passive:true});
-      onScroll();
-
-
-    });
-  </script>
+  <script src="script.js"></script>
 
 </body>
 </html>
