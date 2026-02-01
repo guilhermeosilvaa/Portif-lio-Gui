@@ -14,6 +14,9 @@
 
 
 
+  <!-- Canvas cursor effect -->
+  <canvas id="canvas" style="position:fixed;top:0;left:0;z-index:-2;"></canvas>
+
   <!-- Galaxy balls animation -->
   <div class="galaxy-ball"></div>
   <div class="galaxy-ball"></div>
@@ -30,6 +33,9 @@
   <div class="galaxy-ball"></div>
   <div class="galaxy-ball"></div>
   <div class="galaxy-ball"></div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scrollProgressBar"></div>
 
   <div class="wrap">
     <header>
@@ -60,18 +66,18 @@
 
     <main>
       <section class="hero">
-        <div class="hero-card">
+        <div class="hero-card neon-card">
           <img id="typingSvg" src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=Ol%C3%A1++eu+sou+Guilherme+Analista+de+QA" alt="Typing SVG">
           <p data-lang="heroDesc">Sou QA e desenvolvedor com foco em backend usando Java e Python. Faço automações, APIs robustas e pipelines de testes confiáveis para entregar software estável e escalável.</p>
           <div class="cta">
-            <a class="btn" href="#projetos" data-lang="heroBtn1">Ver Projetos</a>
-            <a class="btn secondary" href="#contato" data-lang="heroBtn2">Fale Comigo</a>
+            <a class="btn neon-btn" href="#projetos" data-lang="heroBtn1">Ver Projetos</a>
+            <a class="btn secondary neon-btn" href="#contato" data-lang="heroBtn2">Fale Comigo</a>
           </div>
         </div>
 
-        <aside class="hero-card profile">
+        <aside class="hero-card profile neon-card">
           <div class="avatar"></div>
-          <div style="font-weight:700">Guilherme — QA & Dev</div>
+          <div style="font-weight:700" class="neon-text">Guilherme — QA & Dev</div>
           <div class="info">Java • Spring • Python • Flask/Django • Test Automation • SQL</div>
         </aside>
       </section>
@@ -99,8 +105,8 @@
       </section>
 
       <section id="sobre">
-        <h3 data-lang="sobreTitle">Sobre Mim</h3>
-        <div class="card">
+        <h3 data-lang="sobreTitle" class="neon-text">Sobre Mim</h3>
+        <div class="card neon-card">
            <p data-lang="sobreDesc">Tenho experiência em desenvolvimento backend e automação de testes. Trabalho com projetos que exigem confiabilidade, escrita de testes automatizados e integração contínua.</p>
            <div class="education">
              <h3 data-lang="educacaoTitle">Educação</h3>
@@ -109,22 +115,22 @@
         </div>
 
         <div class="tech-stack">
-          <h3 data-lang="softSkillTitle">Soft Skill</h3>
-          <div class="card">
+          <h3 data-lang="softSkillTitle" class="neon-text">Soft Skill</h3>
+          <div class="card neon-card">
             <div class="badges">
-              <img class="badge-hover" src="https://img.shields.io/badge/Java-F7DF1E?style=for-the-badge&logo=java&logoColor=black" alt="Java">
-              <img class="badge-hover" src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-              <img class="badge-hover" src="https://img.shields.io/badge/json%20web%20tokens-323330?style=for-the-badge&logo=json-web-tokens&logoColor=pink" alt="Json">
-              <img class="badge-hover" src="https://img.shields.io/badge/Microsoft_Azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure">
-              <img class="badge-hover" src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=Jira&logoColor=white" alt="Jira">
-              <img class="badge-hover" src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
-              <img class="badge-hover" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
-              <img class="badge-hover" src="https://img.shields.io/badge/Bitbucket-0089D6?style=for-the-badge&logo=Bitbucket&logoColor=white" alt="Bitbucket">
-              <img class="badge-hover" src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
-              <img class="badge-hover" src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB">
-              <img class="badge-hover" src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" alt="Figma">
-              <img class="badge-hover" src="https://img.shields.io/badge/Microservices-1572B6?style=for-the-badge&logo=docker&logoColor=white" alt="Microservices">
-              <img class="badge-hover" src="https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white" alt="Trello">
+              <img class="badge-hover neon-pulse" src="https://img.shields.io/badge/Java-F7DF1E?style=for-the-badge&logo=java&logoColor=black" alt="Java">
+              <img class="badge-hover neon-pulse" src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+              <img class="badge-hover neon-pulse" src="https://img.shields.io/badge/json%20web%20tokens-323330?style=for-the-badge&logo=json-web-tokens&logoColor=pink" alt="Json">
+              <img class="badge-hover neon-pulse" src="https://img.shields.io/badge/Microsoft_Azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white" alt="Azure">
+              <img class="badge-hover neon-pulse" src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=Jira&logoColor=white" alt="Jira">
+              <img class="badge-hover neon-pulse" src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
+              <img class="badge-hover neon-pulse" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+              <img class="badge-hover neon-pulse" src="https://img.shields.io/badge/Bitbucket-0089D6?style=for-the-badge&logo=Bitbucket&logoColor=white" alt="Bitbucket">
+              <img class="badge-hover neon-pulse" src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
+              <img class="badge-hover neon-pulse" src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB">
+              <img class="badge-hover neon-pulse" src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" alt="Figma">
+              <img class="badge-hover neon-pulse" src="https://img.shields.io/badge/Microservices-1572B6?style=for-the-badge&logo=docker&logoColor=white" alt="Microservices">
+              <img class="badge-hover neon-pulse" src="https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white" alt="Trello">
             </div>
           </div>
         </div>
@@ -133,24 +139,24 @@
 
 
       <section id="projetos" class="projects">
-        <h3 data-lang="projetosTitle">Projetos</h3>
+        <h3 data-lang="projetosTitle" class="neon-text">Projetos</h3>
         <div class="cards">
-          <div class="card project">
+          <div class="card project neon-card">
             <div><strong data-lang="projeto1Title">Gerador de QR Code (Python)</strong></div>
             <div class="meta" data-lang="projeto1Desc">Geração de QR codes para URLs, interface web</div>
-            <div class="links"><a href="https://github.com/guilhermeosilvaa/QR-Code-Generated-URL" target="_blank" data-lang="projeto1Link">Repositório</a></div>
+            <div class="links"><a href="https://github.com/guilhermeosilvaa/QR-Code-Generated-URL" target="_blank" data-lang="projeto1Link" class="neon-link">Repositório</a></div>
           </div>
-          <div class="card project">
+          <div class="card project neon-card">
             <div><strong data-lang="projeto2Title">Sistema de Gestão (Spring Boot)</strong></div>
             <div class="meta" data-lang="projeto2Desc">Backend, API REST, autenticação, testes</div>
             <div class="links" data-lang="projeto2Link">Em Andamento</div>
           </div>
-          <div class="card project">
+          <div class="card project neon-card">
             <div><strong data-lang="projeto3Title">Automação de Testes (Python)</strong></div>
             <div class="meta" data-lang="projeto3Desc">Scripts, integração CI, relatórios</div>
             <div class="links" data-lang="projeto3Link">Em Andamento</div>
           </div>
-          <div class="card project">
+          <div class="card project neon-card">
             <div><strong data-lang="projeto4Title">API REST (Flask)</strong></div>
             <div class="meta" data-lang="projeto4Desc">Endpoints, documentação, testes</div>
             <div class="links" data-lang="projeto4Link">Em Andamento</div>
@@ -165,7 +171,7 @@
             <span data-lang="contatoDesc">Envie um email:</span>
             <a href="#" id="emailBtn" class="inline-link">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-              <span data-lang="contatoLink">guilhermeosilva2406@gmail.com</span>
+              <span data-lang="contatoLink">Enviar Email</span>
             </a>
           </div>
         </div>
@@ -194,6 +200,8 @@
     </footer>
 
   </div>
+
+  <button id="glitchButton" class="glitch-button">Trigger Glitch</button>
 
   <script src="script.js"></script>
 

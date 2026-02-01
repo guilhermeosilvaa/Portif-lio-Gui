@@ -1,6 +1,11 @@
 :root{
   --bg:#000000; --card:#111111; --muted:#cccccc; --accent:#007bff; --glass: rgba(255,255,255,0.05); --text:#ffffff;
   --radius:12px; --container:1100px; --nav-transition:.22s; --nav-ease:cubic-bezier(.2,.9,.3,1);
+  --neon-cyan: #00ffff;
+  --neon-purple: #7c3aed;
+  --neon-blue: #0ea5e9;
+  --neon-pink: #10b981;
+  --neon-green: #00ff00;
 }
 :root.light-mode{
   --bg:#f5f5f5; --card:#ffffff; --muted:#666666; --accent:#0056b3; --glass: rgba(0,0,0,0.05); --text:#222222;
@@ -211,7 +216,7 @@ footer{padding:28px 0;color:var(--muted);text-align:center;border-top:1px solid 
   .avatar{width:120px;height:120px}
   .wrap{padding:10px}
   .cards{grid-template-columns:1fr}
-  .badges{gap:2px;flex-direction:column}
+  .badges{gap:2px}
 }
 header.scrolled{transform:translateY(0);backdrop-filter:blur(6px);background:linear-gradient(180deg, rgba(7,10,18,0.6), rgba(7,10,18,0.25));border-radius:14px;padding:6px 12px;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
 header{transition:padding .28s var(--nav-ease),box-shadow .28s var(--nav-ease),backdrop-filter .28s var(--nav-ease),background .28s var(--nav-ease)}
