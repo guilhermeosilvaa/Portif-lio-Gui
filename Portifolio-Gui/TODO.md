@@ -1,5 +1,0 @@
-- [x] Adicionar novo cartão de projeto para Gerador de QR Code no portfólio
-- [x] Adicionar foto no avatar
-- [x] Adicionar foto no logo
-- [x] Adicionar ícones SVG nas habilidades
-- [x] Remover fundo de código binário e adicionar fundo animado profissional
